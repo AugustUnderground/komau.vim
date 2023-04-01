@@ -1,33 +1,11 @@
-<h1 align="center">
-    komau.vim
-</h1>
+<h1 align="center"> komau.vim </h1>
 
-<p align="center">
-    Yet another minimal colorscheme for Vim/Neovim.
-</p>
+<p align="center"> Yet another minimal colorscheme for Vim/Neovim. </p>
 <p align="center">
     <strong>komau</strong> -> <strong>không màu</strong> (Vietnamese) -> <strong>no color</strong> (English)
 </p>
-<p align="center">
-    <a href="https://github.com/ntk148v/komau.vim/blob/master/LICENSE">
-        <img alt="GitHub license" src="https://img.shields.io/github/license/ntk148v/komau.vim?style=for-the-badge">
-    </a>
-    <a href="https://github.com/ntk148v/komau.vim/stargazers"> <img alt="GitHub stars" src="https://img.shields.io/github/stars/ntk148v/komau.vim?style=for-the-badge"> </a>
-    <a href="https://github.com/ntk148v/komau.nvim/issues"><img src="https://img.shields.io/github/issues/ntk148v/komau.vim?colorA=192330&colorB=dbc074&style=for-the-badge"></a>
-    <a href="https://github.com/ntk148v/komau.nvim/contributors"><img src="https://img.shields.io/github/contributors/ntk148v/komau.vim?colorA=192330&colorB=81b29a&style=for-the-badge"></a>
-</p>
 
-<div align="center">
-    <h3>Dark</h3><img src="https://raw.githubusercontent.com/ntk148v/komau.vim/master/screenshots/golang-dark.png" alt="dark" style="border-radius:1%" />
-    <h3>Light</h3><img src="https://raw.githubusercontent.com/ntk148v/komau.vim/master/screenshots/golang-light.png" alt="dark" style="border-radius:1%" />
-</div>
-
-- [1. Installation](#1-installation)
-- [2. Usage](#2-usage)
-- [3. Credits](#3-credits)
-- [4. Contributions](#4-contributions)
-
-## 1. Installation
+## Installation
 
 You can install `komau` with your plugin manager:
 
@@ -35,11 +13,9 @@ You can install `komau` with your plugin manager:
 Plug 'ntk148v/komau.vim' " Vim-plug
 ```
 
-```lua
-use {"ntk148v/komau.vim"} -- Packer
-```
+## Usage
 
-## 2. Usage
+### Vim
 
 ```vim
 :colorscheme komau
@@ -49,10 +25,13 @@ use {"ntk148v/komau.vim"} -- Packer
 :set background=dark
 ```
 
-## 3. Credits
+### Ligthline
 
-Based on the [off](https://github.com/pbrisbin/vim-colors-off) colorscheme.
+```vim
+let g:lightline = { 'colorscheme': 'komau' }
+```
 
-## 4. Contributions
+## Credits
 
-If you find any problems with this color scheme please post an issue here on GitHub.
+Fork of [komau](https://github.com/AugustUnderground/komau.vim) which is
+based on the [off](https://github.com/pbrisbin/vim-colors-off) colorscheme.
