@@ -27,4 +27,4 @@ let s:p.tabline.tabsel = [[["#cccccc", 235], ["#767676", 250]]]
 let s:p.tabline.middle = [[["#f0f0f0", 242], ["#222222", 238]]]
 let s:p.tabline.right = [[["#f0f0f0", 250], ["#222222", 242]]]
 
-let g:lightline#colorscheme#atlas#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#komau#palette = lightline#colorscheme#flatten(s:p)
