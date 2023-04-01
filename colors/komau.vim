@@ -1,6 +1,6 @@
 " Name:       komau.vim
-" Version:    0.1.0
-" Maintainer: github.com/ntk148v
+" Version:    0.0.1
+" Maintainer: github.com/augustunderground, forked from github.com/ntk148v
 " License:    Apache 2
 "
 " A minimal colorscheme for Vim/Neovim.
@@ -14,12 +14,12 @@ endif
 
 let g:colors_name='komau'
 
-let s:black           = {"gui": "#222222", "cterm": "235"}
-let s:medium_gray     = {"gui": "#767676", "cterm": "243"}
-let s:white           = {"gui": "#F5EEE6", "cterm": "255"}
-let s:light_black     = {"gui": "#424242", "cterm": "238"}
+let s:white           = {"gui": "#F0F0F0", "cterm": "153"}
+let s:black           = {"gui": "#131313", "cterm": "235"}
+let s:light_black     = {"gui": "#222222", "cterm": "235"}
 let s:lighter_black   = {"gui": "#545454", "cterm": "240"}
 let s:subtle_black    = {"gui": "#303030", "cterm": "236"}
+let s:medium_gray     = {"gui": "#767676", "cterm": "243"}
 let s:light_gray      = {"gui": "#999999", "cterm": "246"}
 let s:lighter_gray    = {"gui": "#CCCCCC", "cterm": "252"}
 let s:lightest_gray   = {"gui": "#E5E5E5", "cterm": "254"}
@@ -46,7 +46,7 @@ else
   let s:bg_subtle       = s:light_gray
   let s:bg_very_subtle  = s:lightest_gray
   let s:norm            = s:light_black
-  let s:norm_subtle     = s:medium_gray
+  let s:norm_subtle     = s:lighter_black
   let s:cursorlinenr    = s:black
 endif
 
@@ -128,7 +128,7 @@ call s:h("StatusLine",    {"bg": s:bg_very_subtle})
 call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
 call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
 call s:h("Title",         {"fg": s:light_gray})
-call s:h("Visual",        {"fg": s:norm, "bg": s:bg_very_subtle})
+call s:h("Visual",        {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("VisualNOS",     {"bg": s:bg_subtle})
 call s:h("WarningMsg",    {"fg": s:yellow})
 call s:h("WildMenu",      {"fg": s:bg, "bg": s:norm})
@@ -157,9 +157,11 @@ call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("PmenuSel",      {"fg": s:subtle_black, "bg": s:pink})
 call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
+
 call s:h("TabLine",       {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("TabLineSel",    {"fg": s:subtle_black, "bg": s:pink, "gui": "bold", "cterm": "bold"})
+call s:h("TabLineSel",    {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
 call s:h("TabLineFill",   {"fg": s:norm, "bg": s:bg_very_subtle})
+
 call s:h("CursorColumn",  {"bg": s:bg_very_subtle})
 call s:h("CursorLine",    {"bg": s:bg_very_subtle})
 call s:h("ColorColumn",   {"bg": s:bg_subtle})
@@ -204,7 +206,6 @@ hi link GitGutterAdd                LineNr
 hi link GitGutterDelete             LineNr
 hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
-
 
 " Markdown
 call s:h("markdownCode", { "fg": s:bg_subtle })
