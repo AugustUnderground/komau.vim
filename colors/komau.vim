@@ -14,21 +14,21 @@ endif
 
 let g:colors_name='komau'
 
-let s:white           = {"gui": "#F0F0F0", "cterm": "153"}
+let s:white           = {"gui": "#f0f0f0", "cterm": "153"}
 let s:black           = {"gui": "#131313", "cterm": "235"}
 let s:light_black     = {"gui": "#222222", "cterm": "235"}
 let s:lighter_black   = {"gui": "#545454", "cterm": "240"}
 let s:subtle_black    = {"gui": "#303030", "cterm": "236"}
 let s:medium_gray     = {"gui": "#767676", "cterm": "243"}
 let s:light_gray      = {"gui": "#999999", "cterm": "246"}
-let s:lighter_gray    = {"gui": "#CCCCCC", "cterm": "252"}
-let s:lightest_gray   = {"gui": "#E5E5E5", "cterm": "254"}
-let s:yellow          = {"gui": "#FED442", "cterm": "221"}
-let s:pink            = {"gui": "#D73A49", "cterm": "167"}
-let s:green           = {"gui": "#09814A", "cterm": "29" }
-let s:red             = {"gui": "#B31D28", "cterm": "124"}
-let s:orange          = {"gui": "#E36209", "cterm": "166"}
-let s:blue            = {"gui": "#005CC5", "cterm": "26" }
+let s:lighter_gray    = {"gui": "#cccccc", "cterm": "252"}
+let s:lightest_gray   = {"gui": "#e5e5e5", "cterm": "254"}
+let s:yellow          = {"gui": "#fed442", "cterm": "221"}
+let s:pink            = {"gui": "#d73a49", "cterm": "167"}
+let s:green           = {"gui": "#09814a", "cterm": "29" }
+let s:red             = {"gui": "#b31d28", "cterm": "124"}
+let s:orange          = {"gui": "#e36209", "cterm": "166"}
+let s:blue            = {"gui": "#005cc5", "cterm": "26" }
 
 let s:background = &background
 
@@ -36,6 +36,7 @@ if &background == "dark"
   let s:fg              = s:white
   let s:fg_subtle       = s:light_gray
   let s:bg              = s:black
+  let s:bg_light        = s:light_black
   let s:bg_subtle       = s:lighter_black
   let s:bg_very_subtle  = s:subtle_black
   let s:norm            = s:lighter_gray
@@ -45,6 +46,7 @@ else
   let s:fg              = s:black
   let s:fg_subtle       = s:light_black
   let s:bg              = s:white
+  let s:bg_light        = s:lighter_gray
   let s:bg_subtle       = s:light_gray
   let s:bg_very_subtle  = s:lightest_gray
   let s:norm            = s:light_black
@@ -156,7 +158,7 @@ else
 endif
 
 call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("PmenuSel",      {"fg": s:subtle_black, "bg": s:pink})
+call s:h("PmenuSel",      {"fg": s:bg_very_subtle, "bg": s:pink})
 call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
 
@@ -164,8 +166,8 @@ call s:h("TabLine",       {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("TabLineSel",    {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
 call s:h("TabLineFill",   {"fg": s:norm, "bg": s:bg_very_subtle})
 
-call s:h("CursorColumn",  {"bg": s:bg_very_subtle})
-call s:h("CursorLine",    {"bg": s:bg_very_subtle})
+call s:h("CursorColumn",  {"bg": s:bg_light})
+call s:h("CursorLine",    {"bg": s:bg_light})
 call s:h("ColorColumn",   {"bg": s:bg_subtle})
 
 call s:h("MatchParen",    {"bg": s:bg_subtle, "fg": s:norm})
