@@ -141,7 +141,7 @@ call s:h("FoldColumn",    {"fg": s:bg_subtle})
 call s:h("DiffAdd",       {"fg": s:green})
 call s:h("DiffDelete",    {"fg": s:red})
 call s:h("DiffChange",    {"fg": s:yellow})
-call s:h("DiffText",      {"fg": s:blue})
+call s:h("DiffText",      {"fg": s:pink})
 call s:h("SignColumn",    {"fg": s:green})
 
 
@@ -158,7 +158,7 @@ else
 endif
 
 call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("PmenuSel",      {"fg": s:bg_very_subtle, "bg": s:pink})
+call s:h("PmenuSel",      {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm": "bold"})
 call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
 
