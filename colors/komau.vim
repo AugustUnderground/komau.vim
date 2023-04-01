@@ -34,6 +34,7 @@ let s:background = &background
 
 if &background == "dark"
   let s:fg              = s:white
+  let s:fg_subtle       = s:light_gray
   let s:bg              = s:black
   let s:bg_subtle       = s:lighter_black
   let s:bg_very_subtle  = s:subtle_black
@@ -42,6 +43,7 @@ if &background == "dark"
   let s:cursorlinenr    = s:white
 else
   let s:fg              = s:black
+  let s:fg_subtle       = s:light_black
   let s:bg              = s:white
   let s:bg_subtle       = s:light_gray
   let s:bg_very_subtle  = s:lightest_gray
@@ -102,7 +104,7 @@ hi! link StorageClass     Type
 hi! link Structure        Type
 hi! link Typedef          Type
 
-call s:h("Special",       {"fg": s:norm_subtle, "gui": "italic"})
+call s:h("Special",       {"fg": s:fg_subtle})
 hi! link SpecialChar      Special
 hi! link Tag              Special
 hi! link Delimiter        Special
