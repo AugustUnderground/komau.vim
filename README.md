@@ -33,5 +33,5 @@ let g:lightline = { 'colorscheme': 'komau' }
 
 ## Credits
 
-Fork of [komau](https://github.com/AugustUnderground/komau.vim) which is
+Fork of [komau](https://github.com/ntk148v/komau.vim) which is
 based on the [off](https://github.com/pbrisbin/vim-colors-off) colorscheme.
