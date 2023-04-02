@@ -14,44 +14,59 @@ endif
 
 let g:colors_name='komau'
 
-let s:white           = {"gui": "#f0f0f0", "cterm": "153"}
-let s:black           = {"gui": "#131313", "cterm": "235"}
-let s:light_black     = {"gui": "#222222", "cterm": "235"}
-let s:lighter_black   = {"gui": "#545454", "cterm": "240"}
-let s:subtle_black    = {"gui": "#303030", "cterm": "236"}
-let s:medium_gray     = {"gui": "#767676", "cterm": "243"}
-let s:light_gray      = {"gui": "#999999", "cterm": "246"}
-let s:lighter_gray    = {"gui": "#cccccc", "cterm": "252"}
-let s:lightest_gray   = {"gui": "#e5e5e5", "cterm": "254"}
-let s:yellow          = {"gui": "#fed442", "cterm": "221"}
-let s:pink            = {"gui": "#d73a49", "cterm": "167"}
-let s:green           = {"gui": "#09814a", "cterm": "29" }
-let s:red             = {"gui": "#b31d28", "cterm": "124"}
-let s:orange          = {"gui": "#e36209", "cterm": "166"}
-let s:blue            = {"gui": "#005cc5", "cterm": "26" }
+let s:black00 = {"gui": "#060404", "cterm": "232"}
+let s:black01 = {"gui": "#0E0E0E", "cterm": "233"}
+let s:black02 = {"gui": "#181818", "cterm": "234"}
+let s:black03 = {"gui": "#222222", "cterm": "235"}
+let s:black04 = {"gui": "#2C2C2C", "cterm": "236"}
+let s:black05 = {"gui": "#363636", "cterm": "237"}
+
+let s:gray00  = {"gui": "#515151", "cterm": "242"}
+let s:gray01  = {"gui": "#656565", "cterm": "243"}
+let s:gray02  = {"gui": "#797979", "cterm": "244"}
+let s:gray03  = {"gui": "#8D8D8D", "cterm": "245"}
+let s:gray04  = {"gui": "#A1A1A1", "cterm": "246"}
+
+let s:white00 = {"gui": "#F6F6FF", "cterm": "255"}
+let s:white01 = {"gui": "#ECECEC", "cterm": "254"}
+let s:white02 = {"gui": "#E2E2E2", "cterm": "253"}
+let s:white03 = {"gui": "#D8D8D8", "cterm": "252"}
+let s:white04 = {"gui": "#CECECE", "cterm": "251"}
+let s:white05 = {"gui": "#C4C4C4", "cterm": "250"}
+
+let s:yellow  = {"gui": "#FFB20F", "cterm": "172"}
+let s:red     = {"gui": "#8F0024", "cterm": "124"}
+let s:green   = {"gui": "#0EAD69", "cterm": "114" }
+let s:purple  = {"gui": "#8D029B", "cterm": "126"}
+let s:blue    = {"gui": "#0047AB", "cterm": "33" }
+let s:cyan    = {"gui": "#20B2AA", "cterm": "44" }
 
 let s:background = &background
 
 if &background == "dark"
-  let s:fg              = s:white
-  let s:fg_subtle       = s:light_gray
-  let s:bg              = s:black
-  let s:bg_light        = s:light_black
-  let s:bg_subtle       = s:lighter_black
-  let s:bg_very_subtle  = s:subtle_black
-  let s:norm            = s:lighter_gray
-  let s:norm_subtle     = s:medium_gray
-  let s:cursorlinenr    = s:white
+    let s:fg              = s:white00
+    let s:bg              = s:black00
+    let s:fg_light        = s:gray04
+    let s:fg_subtle       = s:white05
+    let s:fg_very_subtle  = s:white03
+    let s:bg_light        = s:gray00
+    let s:bg_subtle       = s:black04
+    let s:bg_very_subtle  = s:black02
+    let s:norm            = s:white04
+    let s:norm_subtle     = s:gray03
+    let s:cursorlinenr    = s:white00
 else
-  let s:fg              = s:black
-  let s:fg_subtle       = s:light_black
-  let s:bg              = s:white
-  let s:bg_light        = s:lighter_gray
-  let s:bg_subtle       = s:light_gray
-  let s:bg_very_subtle  = s:lightest_gray
-  let s:norm            = s:light_black
-  let s:norm_subtle     = s:lighter_black
-  let s:cursorlinenr    = s:black
+    let s:fg              = s:black00
+    let s:bg              = s:white00
+    let s:fg_light        = s:gray00
+    let s:fg_subtle       = s:black05
+    let s:fg_very_subtle  = s:black03
+    let s:bg_light        = s:gray04
+    let s:bg_subtle       = s:white04
+    let s:bg_very_subtle  = s:white02
+    let s:norm            = s:black04
+    let s:norm_subtle     = s:gray01
+    let s:cursorlinenr    = s:black00
 endif
 
 " https://github.com/noahfrederick/vim-hemisu/
@@ -66,15 +81,24 @@ function! s:h(group, style)
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
 endfunction
 
-call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
+" https://github.com/itchyny/lightline.vim/issues/178
+function! s:lightline_update()
+    runtime autoload/lightline/colorscheme/komau.vim
+    call lightline#init()
+    call lightline#colorscheme()
+    call lightline#update()
+endfunction
+
+call s:h("Normal", {"bg": s:bg, "fg": s:norm})
 
 " restore &background's value in case changing Normal changed &background (:help :hi-normal-cterm)
 if &background != s:background
    execute "set background=" . s:background
+   call s:lightline_update()
 endif
 
-call s:h("Cursor",        {"bg": s:light_black, "fg": s:norm })
-call s:h("Comment",       {"fg": s:bg_subtle, "gui": "italic"})
+call s:h("Cursor",        {"bg": s:bg_light, "fg": s:norm })
+call s:h("Comment",       {"fg": s:bg_light, "gui": "italic"})
 
 call s:h("Constant",      {"fg": s:norm_subtle})
 hi! link Character        Constant
@@ -93,7 +117,7 @@ hi! link Label            Statement
 hi! link Keyword          Statement
 hi! link Exception        Statement
 
-call s:h("Operator",      {"fg": s:norm, "cterm": "bold", "gui": "bold"})
+call s:h("Operator",      {"fg": s:fg_very_subtle, "cterm": "bold", "gui": "bold"})
 
 call s:h("PreProc",       {"fg": s:norm_subtle})
 hi! link Include          PreProc
@@ -101,7 +125,7 @@ hi! link Define           PreProc
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
-call s:h("Type",          {"fg": s:norm})
+call s:h("Type",          {"fg": s:fg_light})
 hi! link StorageClass     Type
 hi! link Structure        Type
 hi! link Typedef          Type
@@ -113,94 +137,94 @@ hi! link Delimiter        Special
 hi! link SpecialComment   Special
 hi! link Debug            Special
 
-call s:h("Underlined",    {"fg": s:norm, "gui": "underline", "cterm": "underline"})
-call s:h("Ignore",        {"fg": s:bg})
-call s:h("Error",         {"fg": s:white, "bg": s:red, "cterm": "bold"})
-call s:h("Todo",          {"fg": s:pink, "gui": "underline", "cterm": "underline"})
-call s:h("SpecialKey",    {"fg": s:green})
-call s:h("NonText",       {"fg": s:medium_gray})
-call s:h("Directory",     {"fg": s:norm, "gui": "bold", "cterm": "bold"})
-call s:h("ErrorMsg",      {"fg": s:red})
-call s:h("IncSearch",     {"bg": s:norm_subtle, "fg": s:bg})
-call s:h("Search",        {"bg": s:norm, "fg": s:bg, "cterm": "bold", "gui": "bold"})
-call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": "bold", "gui": "bold"})
+call s:h("Underlined",   {"fg": s:norm, "gui": "underline", "cterm": "underline"})
+call s:h("Ignore",       {"fg": s:bg_very_subtle})
+call s:h("Error",        {"fg": s:white00, "bg": s:red, "cterm": "bold"})
+call s:h("Todo",         {"fg": s:yellow, "gui": "underline", "cterm": "underline"})
+call s:h("SpecialKey",   {"fg": s:green})
+call s:h("NonText",      {"fg": s:gray02})
+call s:h("Directory",    {"fg": s:norm, "gui": "bold", "cterm": "bold"})
+call s:h("ErrorMsg",     {"fg": s:red})
+call s:h("IncSearch",    {"bg": s:norm_subtle, "fg": s:bg})
+call s:h("Search",       {"bg": s:norm, "fg": s:bg, "cterm": "bold", "gui": "bold"})
+call s:h("MoreMsg",      {"fg": s:fg_subtle, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
-call s:h("LineNr",        {"fg": s:bg_subtle})
-call s:h("CursorLineNr",  {"fg": s:cursorlinenr, "bg": s:bg_very_subtle, "cterm": "bold", "gui": "bold"})
-call s:h("Question",      {"fg": s:red})
-call s:h("StatusLine",    {"bg": s:bg_very_subtle})
-call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
-call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
-call s:h("Title",         {"fg": s:light_gray})
-call s:h("Visual",        {"fg": s:norm, "bg": s:bg_subtle})
-call s:h("VisualNOS",     {"bg": s:bg_subtle})
-call s:h("WarningMsg",    {"fg": s:yellow})
-call s:h("WildMenu",      {"fg": s:bg, "bg": s:norm})
-call s:h("Folded",        {"fg": s:medium_gray})
-call s:h("FoldColumn",    {"fg": s:bg_subtle})
-call s:h("DiffAdd",       {"fg": s:green})
-call s:h("DiffDelete",    {"fg": s:red})
-call s:h("DiffChange",    {"fg": s:yellow})
-call s:h("DiffText",      {"fg": s:pink})
-call s:h("SignColumn",    {"fg": s:green})
+call s:h("Question",     {"fg": s:purple})
+call s:h("StatusLine",   {"bg": s:bg_very_subtle})
 
+call s:h("StatusLineNC", {"bg": s:bg_very_subtle, "fg": s:fg_very_subtle})
+call s:h("VertSplit",    {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
+call s:h("Title",        {"fg": s:fg_light})
+call s:h("Visual",       {"fg": s:norm, "bg": s:bg_subtle})
+call s:h("VisualNOS",    {"bg": s:bg_subtle})
+call s:h("WarningMsg",   {"fg": s:yellow})
+call s:h("WildMenu",     {"fg": s:bg, "bg": s:norm})
+call s:h("Folded",       {"fg": s:fg_light})
+call s:h("FoldColumn",   {"fg": s:bg_subtle})
+call s:h("DiffAdd",      {"fg": s:green})
+call s:h("DiffDelete",   {"fg": s:red})
+call s:h("DiffChange",   {"fg": s:yellow})
+call s:h("DiffText",     {"fg": s:cyan})
+call s:h("SignColumn",   {"fg": s:green})
 
 if has("gui_running")
-  call s:h("SpellBad",    {"gui": "underline", "sp": s:red})
-  call s:h("SpellCap",    {"gui": "underline", "sp": s:green})
-  call s:h("SpellRare",   {"gui": "underline", "sp": s:orange})
-  call s:h("SpellLocal",  {"gui": "underline", "sp": s:green})
+    call s:h("SpellBad",   {"gui": "underline", "sp": s:red})
+    call s:h("SpellCap",   {"gui": "underline", "sp": s:green})
+    call s:h("SpellRare",  {"gui": "underline", "sp": s:purple})
+    call s:h("SpellLocal", {"gui": "underline", "sp": s:green})
 else
-  call s:h("SpellBad",    {"cterm": "underline", "fg": s:red})
-  call s:h("SpellCap",    {"cterm": "underline", "fg": s:green})
-  call s:h("SpellRare",   {"cterm": "underline", "fg": s:orange})
-  call s:h("SpellLocal",  {"cterm": "underline", "fg": s:green})
+    call s:h("SpellBad",   {"cterm": "underline", "fg": s:red})
+    call s:h("SpellCap",   {"cterm": "underline", "fg": s:green})
+    call s:h("SpellRare",  {"cterm": "underline", "fg": s:purple})
+    call s:h("SpellLocal", {"cterm": "underline", "fg": s:green})
 endif
 
-call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("PmenuSel",      {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm": "bold"})
-call s:h("PmenuSbar",     {"fg": s:norm, "bg": s:bg_subtle})
-call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
+call s:h("Pmenu",      {"fg": s:norm, "bg": s:bg_very_subtle})
+call s:h("PmenuSel",   {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm": "bold"})
+call s:h("PmenuSbar",  {"fg": s:norm, "bg": s:bg_subtle})
+call s:h("PmenuThumb", {"fg": s:norm, "bg": s:bg_subtle})
 
-call s:h("TabLine",       {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("TabLineSel",    {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
-call s:h("TabLineFill",   {"fg": s:norm, "bg": s:bg_very_subtle})
+call s:h("TabLine",     {"fg": s:norm, "bg": s:bg_very_subtle})
+call s:h("TabLineSel",  {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
+call s:h("TabLineFill", {"fg": s:norm, "bg": s:bg_very_subtle})
 
-call s:h("CursorColumn",  {"bg": s:bg_light})
-call s:h("CursorLine",    {"bg": s:bg_light})
-call s:h("ColorColumn",   {"bg": s:bg_subtle})
+call s:h("LineNr",       {"fg": s:bg_subtle})
+call s:h("CursorLineNr", {"fg": s:cursorlinenr, "bg": s:bg_very_subtle, "cterm": "bold", "gui": "bold"})
+call s:h("CursorColumn", {"bg": s:bg_very_subtle})
+call s:h("CursorLine",   {"bg": s:bg_very_subtle})
+call s:h("ColorColumn",  {"bg": s:bg_subtle})
 
-call s:h("MatchParen",    {"bg": s:bg_subtle, "fg": s:norm})
-call s:h("qfLineNr",      {"fg": s:medium_gray})
+call s:h("MatchParen", {"bg": s:bg_subtle, "fg": s:norm})
+call s:h("qfLineNr",   {"fg": s:fg_light})
 
-call s:h("htmlH1",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH2",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH3",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH4",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH5",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH6",        {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH1", {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH2", {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH3", {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH4", {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH5", {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH6", {"bg": s:bg, "fg": s:norm})
 
 " Syntastic
-call s:h("SyntasticWarningSign",    {"fg": s:yellow})
-call s:h("SyntasticWarning",        {"bg": s:yellow, "fg": s:black, "gui": "bold", "cterm": "bold"})
-call s:h("SyntasticErrorSign",      {"fg": s:red})
-call s:h("SyntasticError",          {"bg": s:red, "fg": s:white, "gui": "bold", "cterm": "bold"})
+call s:h("SyntasticWarningSign", {"fg": s:yellow})
+call s:h("SyntasticWarning",     {"bg": s:yellow, "fg": s:black00, "gui": "bold", "cterm": "bold"})
+call s:h("SyntasticErrorSign",   {"fg": s:red})
+call s:h("SyntasticError",       {"bg": s:red, "fg": s:white00, "gui": "bold", "cterm": "bold"})
 
 " which-key.nvim
-call s:h("WhichKey",                {"bg": s:bg, "fg": s:pink, "gui": "bold", "cterm": "bold"})
-call s:h("WhichKeyDesc",            {"bg": s:bg, "fg": s:norm_subtle, "gui": "bold", "cterm": "bold"})
-call s:h("WhichKeySeparator",       {"bg": s:bg, "fg": s:norm, "gui": "bold", "cterm": "bold"})
-call s:h("WhichKeyFloat",           {"bg": s:bg})
+call s:h("WhichKey",          {"bg": s:bg, "fg": s:purple, "gui": "bold", "cterm": "bold"})
+call s:h("WhichKeyDesc",      {"bg": s:bg, "fg": s:norm_subtle, "gui": "bold", "cterm": "bold"})
+call s:h("WhichKeySeparator", {"bg": s:bg, "fg": s:norm, "gui": "bold", "cterm": "bold"})
+call s:h("WhichKeyFloat",     {"bg": s:bg})
 
 hi link WhichKeyGroup WhichKey
 
 " Neomake
-hi link NeomakeWarningSign	SyntasticWarningSign
-hi link NeomakeErrorSign	SyntasticErrorSign
+hi link NeomakeWarningSign  SyntasticWarningSign
+hi link NeomakeErrorSign    SyntasticErrorSign
 
 " ALE
-hi link ALEWarningSign	SyntasticWarningSign
-hi link ALEErrorSign	SyntasticErrorSign
+hi link ALEWarningSign  SyntasticWarningSign
+hi link ALEErrorSign    SyntasticErrorSign
 
 " Signify, git-gutter
 hi link SignifySignAdd              LineNr
@@ -212,28 +236,28 @@ hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
 
 " Markdown
-call s:h("markdownCode", { "fg": s:bg_subtle })
-call s:h("markdownLinkReference", { "fg": s:bg_subtle })
+call s:h("markdownCode",              { "fg": s:bg_subtle })
+call s:h("markdownLinkReference",     { "fg": s:bg_subtle })
 call s:h("markdownJekyllFrontMatter", { "fg": s:bg_subtle })
-call s:h("markdownCodeBlock", { "fg": s:norm })
-call s:h("markdownCodeDelimiter", { "fg": s:norm })
-call s:h("markdownHeadingDelimiter", { "fg": s:fg })
-call s:h("markdownRule", { "fg": s:bg_subtle })
-call s:h("markdownHeadingRule", { "fg": s:bg_subtle })
-call s:h("htmlH1", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("htmlH2", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("htmlH3", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("htmlH4", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("htmlH5", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("htmlH6", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("mkdDelimiter", { "fg": s:fg })
-call s:h("markdownId", { "fg": s:light_gray })
-call s:h("markdownBlockquote", { "fg": s:bg_subtle })
-call s:h("markdownItalic", { "fg": s:light_gray, "gui": "italic", "cterm": "italic" })
-call s:h("mkdBold", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("mkdInlineURL", { "fg": s:fg, "gui": "italic", "cterm": "italic" })
-call s:h("mkdListItem", { "fg": s:fg })
+call s:h("markdownCodeBlock",         { "fg": s:norm })
+call s:h("markdownCodeDelimiter",     { "fg": s:norm })
+call s:h("markdownHeadingDelimiter",  { "fg": s:fg })
+call s:h("markdownRule",              { "fg": s:bg_subtle })
+call s:h("markdownHeadingRule",       { "fg": s:bg_subtle })
+call s:h("htmlH1",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("htmlH2",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("htmlH3",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("htmlH4",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("htmlH5",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("htmlH6",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("mkdDelimiter",              { "fg": s:fg })
+call s:h("markdownId",                { "fg": s:fg_subtle })
+call s:h("markdownBlockquote",        { "fg": s:bg_subtle })
+call s:h("markdownItalic",            { "fg": s:fg_subtle, "gui": "italic", "cterm": "italic" })
+call s:h("mkdBold",                   { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("mkdInlineURL",              { "fg": s:fg, "gui": "italic", "cterm": "italic" })
+call s:h("mkdListItem",               { "fg": s:fg })
 call s:h("markdownOrderedListMarker", { "fg": s:fg })
-call s:h("mkdLink", { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("markdownLinkDelimiter", { "fg": s:fg })
-call s:h("mkdURL", { "fg": s:norm_subtle, "gui": "italic", "cterm": "italic" })
+call s:h("mkdLink",                   { "fg": s:fg, "gui": "bold", "cterm": "bold" })
+call s:h("markdownLinkDelimiter",     { "fg": s:fg })
+call s:h("mkdURL",                    { "fg": s:norm_subtle, "gui": "italic", "cterm": "italic" })
