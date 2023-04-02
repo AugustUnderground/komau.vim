@@ -81,13 +81,10 @@ function! s:h(group, style)
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
 endfunction
 
-" https://github.com/itchyny/lightline.vim/issues/178
-function! s:lightline_update()
-    runtime autoload/lightline/colorscheme/komau.vim
-    call lightline#init()
-    call lightline#colorscheme()
-    call lightline#update()
-endfunction
+" https://github.com/itchyny/lightline.vim/issues/424
+autocmd! OptionSet background
+    \ execute 'source' globpath(&rtp, 'autoload/lightline/colorscheme/komau.vim')
+    \ | call lightline#colorscheme() | call lightline#update()
 
 call s:h("Normal", {"bg": s:bg, "fg": s:norm})
 
