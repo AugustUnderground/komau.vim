@@ -182,6 +182,8 @@ call s:h("PmenuSel",   {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm":
 call s:h("PmenuSbar",  {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuThumb", {"fg": s:norm, "bg": s:bg_subtle})
 
+call s:h("CocSearch",      {"fg": s:red, "bg": s:bg_very_subtle})
+
 call s:h("TabLine",     {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("TabLineSel",  {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
 call s:h("TabLineFill", {"fg": s:norm, "bg": s:bg_very_subtle})
