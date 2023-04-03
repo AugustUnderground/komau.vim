@@ -37,8 +37,8 @@ let s:white05 = {"gui": "#C4C4C4", "cterm": "250"}
 let s:yellow  = {"gui": "#FFB20F", "cterm": "172"}
 let s:red     = {"gui": "#8F0024", "cterm": "124"}
 let s:green   = {"gui": "#0EAD69", "cterm": "114" }
-let s:purple  = {"gui": "#8D029B", "cterm": "126"}
-let s:blue    = {"gui": "#0047AB", "cterm": "33" }
+let s:purple  = {"gui": "#BD05CB", "cterm": "126"}
+let s:blue    = {"gui": "#0077DB", "cterm": "33" }
 let s:cyan    = {"gui": "#20B2AA", "cterm": "44" }
 
 let s:background = &background
@@ -184,6 +184,16 @@ call s:h("PmenuThumb", {"fg": s:norm, "bg": s:bg_subtle})
 
 call s:h("CocSearch",          {"fg": s:red, "bg": s:bg_very_subtle})
 call s:h("CocUnusedHighlight", {"fg": s:fg,  "bg": s:bg_subtle})
+
+call s:h("DiagnosticError", {"fg": s:red, "bg": s:bg_very_subtle})
+call s:h("DiagnosticWarn",  {"fg": s:yellow, "bg": s:bg_very_subtle})
+call s:h("DiagnosticInfo",  {"fg": s:blue, "bg": s:bg_very_subtle})
+call s:h("DiagnosticHint",  {"fg": s:fg_light, "bg": s:bg_very_subtle})
+
+call s:h("DiagnosticUnderlineError", {"fg": s:red, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
+call s:h("DiagnosticUnderlineWarn",  {"fg": s:yellow, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
+call s:h("DiagnosticUnderlineInfo",  {"fg": s:blue, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
+call s:h("DiagnosticUnderlineHint",  {"fg": s:fg_light, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
 
 call s:h("TabLine",     {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("TabLineSel",  {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
