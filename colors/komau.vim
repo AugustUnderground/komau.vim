@@ -54,7 +54,6 @@ if &background == "dark"
     let s:bg_very_subtle  = s:black02
     let s:norm            = s:white04
     let s:norm_subtle     = s:gray03
-    let s:cursorlinenr    = s:white00
 else
     let s:fg              = s:black00
     let s:bg              = s:white00
@@ -66,7 +65,6 @@ else
     let s:bg_very_subtle  = s:white02
     let s:norm            = s:black04
     let s:norm_subtle     = s:gray01
-    let s:cursorlinenr    = s:black00
 endif
 
 " https://github.com/noahfrederick/vim-hemisu/
@@ -199,8 +197,8 @@ call s:h("TabLine",     {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("TabLineSel",  {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
 call s:h("TabLineFill", {"fg": s:norm, "bg": s:bg_very_subtle})
 
-call s:h("LineNr",       {"fg": s:bg_subtle})
-call s:h("CursorLineNr", {"fg": s:cursorlinenr, "bg": s:bg_very_subtle, "cterm": "bold", "gui": "bold"})
+call s:h("LineNr",       {"fg": s:bg_light, "bg": s:bg})
+call s:h("CursorLineNr", {"fg": s:fg_subtle, "bg": s:bg_very_subtle, "gui": "bold", "cterm": "bold"})
 call s:h("CursorColumn", {"bg": s:bg_very_subtle})
 call s:h("CursorLine",   {"bg": s:bg_very_subtle})
 call s:h("ColorColumn",  {"bg": s:bg_subtle})
