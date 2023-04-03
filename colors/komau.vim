@@ -180,7 +180,7 @@ call s:h("PmenuSel",   {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm":
 call s:h("PmenuSbar",  {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuThumb", {"fg": s:norm, "bg": s:bg_subtle})
 
-call s:h("CocSearch",          {"fg": s:red, "bg": s:bg_very_subtle})
+call s:h("CocSearch",          {"fg": s:blue, "bg": s:bg_very_subtle})
 call s:h("CocUnusedHighlight", {"fg": s:fg,  "bg": s:bg_subtle})
 
 call s:h("DiagnosticError", {"fg": s:red, "bg": s:bg_very_subtle})
