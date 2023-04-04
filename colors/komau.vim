@@ -149,7 +149,7 @@ call s:h("Question",     {"fg": s:purple})
 call s:h("StatusLine",   {"bg": s:bg_very_subtle})
 
 call s:h("StatusLineNC", {"bg": s:bg_very_subtle, "fg": s:fg_very_subtle})
-call s:h("VertSplit",    {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
+call s:h("VertSplit",    {"bg": s:bg_subtle, "fg": s:bg_subtle})
 call s:h("Title",        {"fg": s:fg_light})
 call s:h("Visual",       {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("VisualNOS",    {"bg": s:bg_subtle})
