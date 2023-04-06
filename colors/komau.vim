@@ -245,14 +245,14 @@ hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
 
 " Markdown
-call s:h("markdownCode",              { "fg": s:bg_subtle })
-call s:h("markdownLinkReference",     { "fg": s:bg_subtle })
-call s:h("markdownJekyllFrontMatter", { "fg": s:bg_subtle })
+call s:h("markdownCode",              { "fg": s:fg_subtle, "bg": bg_subtle })
+call s:h("markdownLinkReference",     { "fg": s:fg_subtle, "bg": bg_subtle })
+call s:h("markdownJekyllFrontMatter", { "fg": s:fg_subtle, "bg": bg_subtle })
 call s:h("markdownCodeBlock",         { "fg": s:norm })
 call s:h("markdownCodeDelimiter",     { "fg": s:norm })
 call s:h("markdownHeadingDelimiter",  { "fg": s:fg })
-call s:h("markdownRule",              { "fg": s:bg_subtle })
-call s:h("markdownHeadingRule",       { "fg": s:bg_subtle })
+call s:h("markdownRule",              { "bg": s:bg_subtle })
+call s:h("markdownHeadingRule",       { "fg": s:fg_light })
 call s:h("htmlH1",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
 call s:h("htmlH2",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
 call s:h("htmlH3",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
