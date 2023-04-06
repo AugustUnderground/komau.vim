@@ -245,9 +245,9 @@ hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
 
 " Markdown
-call s:h("markdownCode",              { "fg": s:fg_subtle, "bg": bg_subtle })
-call s:h("markdownLinkReference",     { "fg": s:fg_subtle, "bg": bg_subtle })
-call s:h("markdownJekyllFrontMatter", { "fg": s:fg_subtle, "bg": bg_subtle })
+call s:h("markdownCode",              { "fg": s:fg_subtle, "bg": s:bg_subtle })
+call s:h("markdownLinkReference",     { "fg": s:fg_subtle, "bg": s:bg_subtle })
+call s:h("markdownJekyllFrontMatter", { "fg": s:fg_subtle, "bg": s:bg_subtle })
 call s:h("markdownCodeBlock",         { "fg": s:norm })
 call s:h("markdownCodeDelimiter",     { "fg": s:norm })
 call s:h("markdownHeadingDelimiter",  { "fg": s:fg })
