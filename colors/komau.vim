@@ -175,10 +175,10 @@ else
     call s:h("SpellLocal", {"cterm": "underline", "fg": s:green})
 endif
 
-call s:h("Pmenu",      {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("PmenuSel",   {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm": "bold"})
-call s:h("PmenuSbar",  {"fg": s:norm, "bg": s:bg_subtle})
-call s:h("PmenuThumb", {"fg": s:norm, "bg": s:bg_subtle})
+call s:h("Pmenu",      {"fg": s:norm, "bg": s:bg_subtle})
+call s:h("PmenuSel",   {"fg": s:norm, "bg": s:bg_light, "gui": "bold", "cterm": "bold"})
+call s:h("PmenuSbar",  {"fg": s:norm, "bg": s:bg_light})
+call s:h("PmenuThumb", {"fg": s:norm, "bg": s:bg_light})
 
 call s:h("CocSearch",          {"fg": s:fg, "bg": s:bg_very_subtle, "gui": "bold", "cterm": "bold"})
 call s:h("CocUnusedHighlight", {"fg": s:fg,  "bg": s:bg_subtle})
