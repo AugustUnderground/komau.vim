@@ -14,6 +14,8 @@ endif
 
 let g:colors_name='komau'
 
+
+let s:black_1 = {"gui": "#000000", "cterm": "232"}
 let s:black00 = {"gui": "#060404", "cterm": "232"}
 let s:black01 = {"gui": "#0E0E0E", "cterm": "233"}
 let s:black02 = {"gui": "#181818", "cterm": "234"}
@@ -27,6 +29,7 @@ let s:gray02  = {"gui": "#797979", "cterm": "244"}
 let s:gray03  = {"gui": "#8D8D8D", "cterm": "245"}
 let s:gray04  = {"gui": "#A1A1A1", "cterm": "246"}
 
+let s:white_1 = {"gui": "#FFFFFF", "cterm": "255"}
 let s:white00 = {"gui": "#F6F6FF", "cterm": "255"}
 let s:white01 = {"gui": "#ECECEC", "cterm": "254"}
 let s:white02 = {"gui": "#E2E2E2", "cterm": "253"}
