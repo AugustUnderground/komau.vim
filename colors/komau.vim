@@ -47,6 +47,8 @@ let s:cyan    = {"gui": "#20B2AA", "cterm": "44" }
 let s:background = &background
 
 if &background == "dark"
+    let s:fg_intense      = s:white_1
+    let s:bg_intense      = s:black_1
     let s:fg              = s:white00
     let s:bg              = s:black00
     let s:fg_light        = s:gray04
@@ -58,6 +60,8 @@ if &background == "dark"
     let s:norm            = s:white04
     let s:norm_subtle     = s:gray03
 else
+    let s:fg_intense      = s:black_1
+    let s:bg_intense      = s:white_1
     let s:fg              = s:black00
     let s:bg              = s:white00
     let s:fg_light        = s:gray00
@@ -96,7 +100,7 @@ if &background != s:background
 endif
 
 call s:h("Cursor",        {"bg": s:bg_light, "fg": s:norm })
-call s:h("Comment",       {"fg": s:bg_light, "gui": "italic"})
+call s:h("Comment",       {"fg": s:norm_subtle, "gui": "italic"})
 
 call s:h("Constant",      {"fg": s:norm_subtle})
 hi! link Character        Constant
@@ -115,7 +119,7 @@ hi! link Label            Statement
 hi! link Keyword          Statement
 hi! link Exception        Statement
 
-call s:h("Operator",      {"fg": s:fg_very_subtle, "cterm": "bold", "gui": "bold"})
+call s:h("Operator",      {"fg": s:fg_intense, "cterm": "bold", "gui": "bold"})
 
 call s:h("PreProc",       {"fg": s:norm_subtle})
 hi! link Include          PreProc
@@ -135,10 +139,10 @@ hi! link Delimiter        Special
 hi! link SpecialComment   Special
 hi! link Debug            Special
 
-call s:h("Underlined",   {"fg": s:norm, "gui": "underline", "cterm": "underline"})
+call s:h("Underlined",   {"fg": s:norm, "gui": "undercurl", "cterm": "underline"})
 call s:h("Ignore",       {"fg": s:bg_very_subtle})
 call s:h("Error",        {"fg": s:white00, "bg": s:red, "cterm": "bold"})
-call s:h("Todo",         {"fg": s:yellow, "gui": "underline", "cterm": "underline"})
+call s:h("Todo",         {"fg": s:yellow, "gui": "undercurl", "cterm": "underline"})
 call s:h("SpecialKey",   {"fg": s:green})
 call s:h("NonText",      {"fg": s:gray02})
 call s:h("Conceal",      {"fg": s:fg, "bg": s:bg})
@@ -167,15 +171,15 @@ call s:h("DiffText",     {"fg": s:cyan})
 call s:h("SignColumn",   {"fg": s:green})
 
 if has("gui_running")
-    call s:h("SpellBad",   {"gui": "underline", "sp": s:red})
-    call s:h("SpellCap",   {"gui": "underline", "sp": s:green})
-    call s:h("SpellRare",  {"gui": "underline", "sp": s:purple})
-    call s:h("SpellLocal", {"gui": "underline", "sp": s:green})
+    call s:h("SpellBad",   {"gui": "undercurl", "sp": s:red})
+    call s:h("SpellCap",   {"gui": "udnercurl", "sp": s:green})
+    call s:h("SpellRare",  {"gui": "udnercurl", "sp": s:purple})
+    call s:h("SpellLocal", {"gui": "udnercurl", "sp": s:blue})
 else
     call s:h("SpellBad",   {"cterm": "underline", "fg": s:red})
     call s:h("SpellCap",   {"cterm": "underline", "fg": s:green})
     call s:h("SpellRare",  {"cterm": "underline", "fg": s:purple})
-    call s:h("SpellLocal", {"cterm": "underline", "fg": s:green})
+    call s:h("SpellLocal", {"cterm": "underline", "fg": s:blue})
 endif
 
 call s:h("Pmenu",      {"fg": s:norm, "bg": s:bg_subtle})
@@ -189,12 +193,12 @@ call s:h("CocUnusedHighlight", {"fg": s:fg,  "bg": s:bg_subtle})
 call s:h("DiagnosticError", {"fg": s:red, "bg": s:bg_very_subtle})
 call s:h("DiagnosticWarn",  {"fg": s:yellow, "bg": s:bg_very_subtle})
 call s:h("DiagnosticInfo",  {"fg": s:blue, "bg": s:bg_very_subtle})
-call s:h("DiagnosticHint",  {"fg": s:fg_light, "bg": s:bg_very_subtle})
+call s:h("DiagnosticHint",  {"fg": s:purple, "bg": s:bg_very_subtle})
 
-call s:h("DiagnosticUnderlineError", {"fg": s:red, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
-call s:h("DiagnosticUnderlineWarn",  {"fg": s:yellow, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
-call s:h("DiagnosticUnderlineInfo",  {"fg": s:blue, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
-call s:h("DiagnosticUnderlineHint",  {"fg": s:fg_light, "bg": s:bg_very_subtle, "gui": "underline", "cterm": "underline"})
+call s:h("DiagnosticUnderlineError", {"fg": s:red, "bg": s:bg_intense, "gui": "undercurl", "cterm": "underline"})
+call s:h("DiagnosticUnderlineWarn",  {"fg": s:yellow, "bg": s:bg_intense, "gui": "undercurl", "cterm": "underline"})
+call s:h("DiagnosticUnderlineInfo",  {"fg": s:blue, "bg": s:bg_intense, "gui": "undercurl", "cterm": "underline"})
+call s:h("DiagnosticUnderlineHint",  {"fg": s:purple, "bg": s:bg_intense, "gui": "undercurl", "cterm": "underline"})
 
 call s:h("TabLine",     {"fg": s:norm, "bg": s:bg_very_subtle})
 call s:h("TabLineSel",  {"fg": s:bg_very_subtle, "bg": s:norm, "gui": "bold", "cterm": "bold"})
@@ -218,9 +222,9 @@ call s:h("htmlH6", {"bg": s:bg, "fg": s:norm})
 
 " Syntastic
 call s:h("SyntasticWarningSign", {"fg": s:yellow})
-call s:h("SyntasticWarning",     {"bg": s:yellow, "fg": s:black00, "gui": "bold", "cterm": "bold"})
+call s:h("SyntasticWarning",     {"bg": s:yellow, "fg": s:bg_intense, "gui": "bold", "cterm": "bold"})
 call s:h("SyntasticErrorSign",   {"fg": s:red})
-call s:h("SyntasticError",       {"bg": s:red, "fg": s:white00, "gui": "bold", "cterm": "bold"})
+call s:h("SyntasticError",       {"bg": s:red, "fg": s:fg_intense, "gui": "bold", "cterm": "bold"})
 
 " which-key.nvim
 call s:h("WhichKey",          {"bg": s:bg, "fg": s:purple, "gui": "bold", "cterm": "bold"})
@@ -248,7 +252,7 @@ hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
 
 " Markdown
-call s:h("markdownCode",              { "fg": s:fg_subtle, "bg": s:bg_subtle })
+call s:h("markdownCode",              { "fg": s:fg_intense, "bg": s:bg_intense })
 call s:h("markdownLinkReference",     { "fg": s:fg_subtle, "bg": s:bg_subtle })
 call s:h("markdownJekyllFrontMatter", { "fg": s:fg_subtle, "bg": s:bg_subtle })
 call s:h("markdownCodeBlock",         { "fg": s:norm })
@@ -262,7 +266,7 @@ call s:h("htmlH3",                    { "fg": s:fg, "gui": "bold", "cterm": "bol
 call s:h("htmlH4",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
 call s:h("htmlH5",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
 call s:h("htmlH6",                    { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("mkdDelimiter",              { "fg": s:fg })
+call s:h("mkdDelimiter",              { "fg": s:fg_intense })
 call s:h("markdownId",                { "fg": s:fg_subtle })
 call s:h("markdownBlockquote",        { "fg": s:bg_subtle })
 call s:h("markdownItalic",            { "fg": s:fg_subtle, "gui": "italic", "cterm": "italic" })
