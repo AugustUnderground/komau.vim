@@ -24,10 +24,10 @@ if (&background == 'dark')
     let s:p.visual.middle = [[["#F6F6FF", 255], ["#0E0E0E", 235]]]
     let s:p.visual.right  = [[["#181818", 235], ["#0EAD69", 167]], [["#F6F6FF", 167], ["#222222", 235]]]
 
-    let s:p.tabline.left   = [[["#F6F6FF", 250], ["#222222", 242]]]
-    let s:p.tabline.tabsel = [[["#A1A1A1", 235], ["#797979", 250]]]
+    let s:p.tabline.left   = [[["#A1A1A1", 250], ["#181818", 242]]]
+    let s:p.tabline.tabsel = [[["#181818", 235], ["#A1A1A1", 250]]]
     let s:p.tabline.middle = [[["#F6F6FF", 242], ["#222222", 238]]]
-    let s:p.tabline.right  = [[["#F6F6FF", 250], ["#222222", 242]]]
+    let s:p.tabline.right  = [[["#A1A1A1", 250], ["#181818", 242]]]
 else
     let s:p.normal.left   = [[["#8F0024", 235], ["#E2E2E2", 167]], [["#060404", 167], ["#D8D8D8", 235]]]
     let s:p.normal.middle = [[["#060404", 255], ["#ECECEC", 235]]]
