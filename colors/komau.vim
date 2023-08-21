@@ -154,7 +154,7 @@ call s:h("IncSearch",    {"bg": s:norm_subtle, "fg": s:bg})
 call s:h("Search",       {"bg": s:norm, "fg": s:bg, "cterm": "bold", "gui": "bold"})
 call s:h("MoreMsg",      {"fg": s:fg_subtle, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
-call s:h("Question",     {"fg": s:blue})
+call s:h("Question",     {"fg": s:fg_intense, "bg": s:bg_intense})
 call s:h("StatusLine",   {"bg": s:bg_very_subtle})
 
 call s:h("StatusLineNC", {"bg": s:bg_very_subtle, "fg": s:fg_very_subtle})
