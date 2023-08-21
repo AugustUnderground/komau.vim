@@ -141,7 +141,7 @@ hi! link Delimiter        Special
 hi! link SpecialComment   Special
 hi! link Debug            Special
 
-call s:h("Underlined",   {"fg": s:norm, "gui": "undercurl", "cterm": "underline"})
+call s:h("Underlined",   {"gui": "underline", "cterm": "underline"})
 call s:h("Ignore",       {"fg": s:bg_very_subtle})
 call s:h("Error",        {"fg": s:white00, "bg": s:red, "cterm": "bold"})
 call s:h("Todo",         {"fg": s:yellow, "gui": "undercurl", "cterm": "underline"})
@@ -172,17 +172,10 @@ call s:h("DiffChange",   {"fg": s:yellow})
 call s:h("DiffText",     {"fg": s:cyan})
 call s:h("SignColumn",   {"fg": s:green})
 
-if has("gui_running")
-    call s:h("SpellBad",   {"gui": "undercurl", "sp": s:red})
-    call s:h("SpellCap",   {"gui": "udnercurl", "sp": s:green})
-    call s:h("SpellRare",  {"gui": "udnercurl", "sp": s:purple})
-    call s:h("SpellLocal", {"gui": "udnercurl", "sp": s:blue})
-else
-    call s:h("SpellBad",   {"cterm": "underline", "fg": s:red})
-    call s:h("SpellCap",   {"cterm": "underline", "fg": s:green})
-    call s:h("SpellRare",  {"cterm": "underline", "fg": s:purple})
-    call s:h("SpellLocal", {"cterm": "underline", "fg": s:blue})
-endif
+call s:h("SpellBad",   {"gui": "undercurl", "sp": s:red})
+call s:h("SpellCap",   {"gui": "undercurl", "sp": s:green})
+call s:h("SpellRare",  {"gui": "undercurl", "sp": s:purple})
+call s:h("SpellLocal", {"gui": "undercurl", "sp": s:blue})
 
 call s:h("Pmenu",      {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("PmenuSel",   {"fg": s:norm, "bg": s:bg_light, "gui": "bold", "cterm": "bold"})
