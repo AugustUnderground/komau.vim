@@ -99,6 +99,8 @@ if &background != s:background
    call s:lightline_update()
 endif
 
+call s:h("SpecialKey",    {"bg": s:bg_intense, "fg": s:fg_intense })
+call s:h("TermCursor",    {"gui": "reverse"})
 call s:h("Cursor",        {"bg": s:bg_light, "fg": s:norm })
 call s:h("Comment",       {"fg": s:norm_subtle, "gui": "italic"})
 
@@ -152,7 +154,7 @@ call s:h("IncSearch",    {"bg": s:norm_subtle, "fg": s:bg})
 call s:h("Search",       {"bg": s:norm, "fg": s:bg, "cterm": "bold", "gui": "bold"})
 call s:h("MoreMsg",      {"fg": s:fg_subtle, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
-call s:h("Question",     {"fg": s:purple})
+call s:h("Question",     {"fg": s:blue})
 call s:h("StatusLine",   {"bg": s:bg_very_subtle})
 
 call s:h("StatusLineNC", {"bg": s:bg_very_subtle, "fg": s:fg_very_subtle})
